@@ -1,13 +1,21 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
+
+bool greater_pair(const pair<string, unsigned long> &a,
+                  const pair<string, unsigned long> &b)
+{
+    return a.second > b.second;
+}
 
 // Most common two letter combinations
 void two_sequence() {
     unsigned long counter[26][26] = {0};
+    vector<pair<string, unsigned long>> table; // holds <freq, string>
     ifstream infile("w.csv");   // use csvparser.py to generate this
-
 
     // Process every word
     string word;
@@ -20,21 +28,25 @@ void two_sequence() {
         }
     }
 
-    // DEBUG print most common sequence
-    int let1max = 0, let2max = 0;
-    unsigned long max = 0;
+    // Get a sortable list of the frequencies
     for (int i = 0; i < 26; i++) {
         for (int j = 0; j < 26; j++) {
-            if (counter[i][j] > max) {
-                let1max = i;
-                let2max = j;
-                max = counter[i][j];
+            if (counter[i][j] != 0) {
+                string s = "";
+                s += (char) (i + 'a');
+                s += (char) (j + 'a');
+                table.push_back(pair<string, unsigned long>{s, counter[i][j]});
             }
         }
     }
-    cout << "Most common combination: " << (char) (let1max + 'a') << " "
-         << (char) (let2max + 'a')
-         << " with count of " << max;
+
+    // Sort frequencies
+    sort(table.begin(), table.end(), greater_pair);
+
+    // DEBUG
+    for (auto &elem : table) {
+        cout << elem.first << " : " << elem.second << endl;
+    }
 }
 
 int main() {
