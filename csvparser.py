@@ -23,6 +23,16 @@ def word_and_freq():
     out.close()
 
 
+def word_sequence_finder_output(seqout):
+    f = open(seqout)
+    out = open('w-s.csv', 'w')
+    for line in f:
+        line = line.split(',')
+        out.write(line[0] + '\n')
+    f.close()
+    out.close()
+
 if __name__ == '__main__':
-    word()
+    word_sequence_finder_output('two-seq-freq.csv')
+    # word()
     # word_and_freq()
