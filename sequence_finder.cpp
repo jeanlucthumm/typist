@@ -48,7 +48,7 @@ void sequence(string inpath, unsigned int n) {
     }
     sort(table.begin(), table.end(), greater_pair);
 
-    ofstream outfile{"outfile.txt", ios::out};
+    ofstream outfile{"outfile.csv", ios::out};
     for (auto &elem : table) {
         outfile << elem.first << "," << (double) elem.second / (double) char_count * 100 << endl;
     }
@@ -58,6 +58,6 @@ void sequence(string inpath, unsigned int n) {
 }
 
 int main() {
-    sequence("w.csv", 2);
-//    sequence("words.txt", 2);
+//    sequence("w.csv", 2);
+    sequence("words.txt", 2);
 }

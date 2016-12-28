@@ -31,6 +31,7 @@ data['x'] = 2
 data['y'] = 5
 data['z'] = 1
 data['\''] = 8
+data['\"'] = 8
 
 
 def is_same_finger(a, b):
@@ -39,21 +40,21 @@ def is_same_finger(a, b):
 
 def find_same_finger(seqListPath):
     f = open(seqListPath)
-    out = open('problem-seq.csv', 'w')
+    out = open('problem-seq-400k.csv', 'w')
 
     # Loop through each substring
     for line in f:
         sub, freq = line.split(',')
-        if is_same_finger(sub[0], sub[1]):
-            out.write(sub + "," + freq)
+        try:
+            if is_same_finger(sub[0], sub[1]):
+                out.write(sub + "," + freq)
+        except KeyError:
+            print('no data for seq:', sub)
 
     f.close()
     out.close()
 
 
 if __name__ == '__main__':
-    find_same_finger('two-seq-freq.csv')
-
-
-
-
+    find_same_finger('two-seq-freq-400k.csv')
+    # find_same_finger('two-seq-freq.csv')
