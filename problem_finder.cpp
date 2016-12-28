@@ -15,7 +15,7 @@ bool is_same_finger(char a, char b) {
 
 void find_same_finger(string seqListPath) {
     ifstream seqList{seqListPath};
-    ofstream out{"problem-seq.csv", ios::out};
+    ofstream out{"data/problem-seq-5000.csv", ios::out};
 
     // Loop through each substring
     string substring;
@@ -30,5 +30,5 @@ void find_same_finger(string seqListPath) {
 }
 
 int main() {
-    find_same_finger("w-s.csv");
+    find_same_finger("data/");
 }

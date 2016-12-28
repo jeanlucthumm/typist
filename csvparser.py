@@ -1,10 +1,11 @@
-INPATH = 'wordfreq.csv'  # input file path
+INPATH = 'data5000.csv'  # path of top 5000 english words csv
 SEP = ','  # separator for output files
+DATA_DIR = 'data/'  # data folder
 
 
 def word():
     f = open(INPATH)
-    out = open('w.csv', 'w')
+    out = open(DATA_DIR + 'word-5000.csv', 'w')
     for line in f:
         line = line.split(',')
         out.write(line[1] + '\n')
@@ -14,7 +15,7 @@ def word():
 
 def word_and_freq():
     f = open(INPATH)
-    out = open('wf.csv', 'w')
+    out = open(DATA_DIR + 'wordfreq-5000.csv', 'w')
     for line in f:
         line = line.split(',')
         wf = [line[1], line[3]]
@@ -25,7 +26,7 @@ def word_and_freq():
 
 def word_sequence_finder_output(seqout):
     f = open(seqout)
-    out = open('w-s.csv', 'w')
+    out = open(DATA_DIR + 'word-seq-finder.csv', 'w')
     for line in f:
         line = line.split(',')
         out.write(line[0] + '\n')
@@ -33,6 +34,4 @@ def word_sequence_finder_output(seqout):
     out.close()
 
 if __name__ == '__main__':
-    # word_sequence_finder_output('two-seq-freq.csv')
     word()
-    # word_and_freq()

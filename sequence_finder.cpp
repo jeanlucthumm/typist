@@ -6,6 +6,8 @@
 
 using namespace std;
 
+const string DATA_DIR = "data/"; // data directory
+
 bool greater_pair(const pair<string, unsigned long> &a,
                   const pair<string, unsigned long> &b) {
     return a.second > b.second;
@@ -58,7 +60,8 @@ void sequence(string inpath, string outpath, unsigned int n) {
 }
 
 int main() {
-//    sequence("w.csv", 2);
-//    sequence("words.txt", "three-seq-freq-400k.csv", 3);
-    sequence("w.csv", "three-seq-freq.csv", 3);
+    sequence(DATA_DIR + "word-5000.csv", DATA_DIR + "two-seq-freq-5000.csv", 2);
+    sequence(DATA_DIR + "word-5000.csv", DATA_DIR + "three-seq-freq-5000.csv", 3);
+    sequence("data400k.txt", DATA_DIR + "two-seq-freq-400k.csv", 2);
+    sequence("data400k.txt", DATA_DIR + "three-seq-freq-400k.csv", 3);
 }

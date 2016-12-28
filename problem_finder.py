@@ -1,4 +1,4 @@
-INPATH = 'w-s.csv'
+DATA_DIR = 'data/'
 
 """
 FINGER DATA
@@ -59,5 +59,8 @@ def find_same_finger(seqListPath, outpath):
 
 
 if __name__ == '__main__':
-    find_same_finger('three-seq-freq.csv', 'problem-3.csv')
+    find_same_finger(DATA_DIR + 'two-seq-freq-5000.csv', DATA_DIR + 'problem-two-5000.csv')
+    find_same_finger(DATA_DIR + 'two-seq-freq-400k.csv', DATA_DIR + 'problem-two-400k.csv')
+    find_same_finger(DATA_DIR + 'three-seq-freq-5000.csv', DATA_DIR + 'problem-three-5000.csv')
+    find_same_finger(DATA_DIR + 'three-seq-freq-400k.csv', DATA_DIR + 'problem-three-400k.csv')
 
