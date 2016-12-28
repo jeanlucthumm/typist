@@ -17,7 +17,6 @@ void find_same_finger(string seqListPath) {
     ifstream seqList{seqListPath};
     ofstream out{"problem-seq.csv", ios::out};
 
-    cout << seqList.is_open();
     // Loop through each substring
     string substring;
     while (getline(seqList, substring)) {
