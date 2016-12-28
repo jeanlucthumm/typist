@@ -33,6 +33,6 @@ def word_sequence_finder_output(seqout):
     out.close()
 
 if __name__ == '__main__':
-    word_sequence_finder_output('two-seq-freq.csv')
-    # word()
+    # word_sequence_finder_output('two-seq-freq.csv')
+    word()
     # word_and_freq()

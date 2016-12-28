@@ -11,7 +11,7 @@ bool greater_pair(const pair<string, unsigned long> &a,
     return a.second > b.second;
 }
 
-void sequence(string inpath, unsigned int n) {
+void sequence(string inpath, string outpath, unsigned int n) {
     map<string, unsigned long> counter;
     unsigned long char_count = 0; // used to compute %
 
@@ -48,7 +48,7 @@ void sequence(string inpath, unsigned int n) {
     }
     sort(table.begin(), table.end(), greater_pair);
 
-    ofstream outfile{"outfile.csv", ios::out};
+    ofstream outfile{outpath, ios::out};
     for (auto &elem : table) {
         outfile << elem.first << "," << (double) elem.second / (double) char_count * 100 << endl;
     }
@@ -59,5 +59,6 @@ void sequence(string inpath, unsigned int n) {
 
 int main() {
 //    sequence("w.csv", 2);
-    sequence("words.txt", 2);
+//    sequence("words.txt", "three-seq-freq-400k.csv", 3);
+    sequence("w.csv", "three-seq-freq.csv", 3);
 }
