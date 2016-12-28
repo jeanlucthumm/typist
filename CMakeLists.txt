@@ -3,5 +3,6 @@ project(typist)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp)
-add_executable(typist ${SOURCE_FILES})
+add_executable(sequence sequence_finder.cpp)
+add_executable(problem problem_finder.cpp)
+

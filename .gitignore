@@ -125,3 +125,4 @@ cmake-build-debug
 # End of https://www.gitignore.io/api/cmake
 /wf.csv
 /w.csv
+/outfile.csv
