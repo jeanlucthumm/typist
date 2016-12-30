@@ -46,7 +46,7 @@ void sequence(string inpath, string outpath, unsigned int n) {
     // Sort map into vector
     vector<pair<string, unsigned long>> table;
     for (auto &elem : counter) {
-        table.push_back(elem);
+        table.emplace_back(elem);
     }
     sort(table.begin(), table.end(), greater_pair);
 
