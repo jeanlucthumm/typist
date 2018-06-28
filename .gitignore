@@ -126,3 +126,6 @@ cmake-build-debug
 /wf.csv
 /w.csv
 /outfile.csv
+
+### User Additions ###
+.idea
