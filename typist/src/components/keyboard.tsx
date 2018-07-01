@@ -3,7 +3,7 @@ import * as React from 'react';
 const keySize = 40;
 
 const keySyms = [
-  'A', 'D', 'F', 'G'
+  'A', 'S', 'D', 'F', 'G'
 ]
 
 interface State {
@@ -11,10 +11,6 @@ interface State {
 }
 
 class Keyboard extends React.Component<{}, State> {
-  private static handleKeyDown(e: KeyboardEvent) {
-    // TODO
-  }
-
   constructor(props: {}) {
     super(props);
 
@@ -28,11 +24,17 @@ class Keyboard extends React.Component<{}, State> {
   }
 
   public componentDidMount() {
-    window.addEventListener('keydown', Keyboard.handleKeyDown)
+    window.addEventListener('keydown',
+      (e: KeyboardEvent) => this.handleKeyPress(e, true))
+    window.addEventListener('keyup',
+      (e: KeyboardEvent) => this.handleKeyPress(e, false))
   }
 
   public componentWillUnmount() {
-    window.removeEventListener('keydown', Keyboard.handleKeyDown)
+    window.removeEventListener('keydown',
+      (e: KeyboardEvent) => this.handleKeyPress(e, true))
+    window.removeEventListener('keyup',
+      (e: KeyboardEvent) => this.handleKeyPress(e, false))
   }
 
   public render() {
@@ -45,6 +47,20 @@ class Keyboard extends React.Component<{}, State> {
         {keys}
       </svg>
     )
+  }
+
+  private handleKeyPress(e: KeyboardEvent, down: boolean) {
+    // disregard if not a valid key
+    const key = e.key.toUpperCase();
+    if (keySyms.indexOf(key) < 0) {
+      return
+    }
+
+    const temp = this.state.activeKeys;
+    temp[key] = down
+    this.setState({
+      activeKeys: temp
+    })
   }
 
   private makeKey(x: number, y: number, mainSym: string) {
