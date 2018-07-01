@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-// const keySize = 40;
+const keySize = 40;
 
 const keySyms = [
-  'a', 'd', 'f', 'g'
+  'A', 'D', 'F', 'G'
 ]
 
 interface State {
@@ -23,7 +23,7 @@ class Keyboard extends React.Component<{}, State> {
     }
 
     for (const k of keySyms) {
-      this.state.activeKeys[k] = true
+      this.state.activeKeys[k] = false
     }
   }
 
@@ -36,10 +36,25 @@ class Keyboard extends React.Component<{}, State> {
   }
 
   public render() {
+    const keys = []
+    for (let i = 0; i < keySyms.length; i++) {
+      keys.push(this.makeKey(i * 42, 0, keySyms[i]))
+    }
     return (
-      <div>
-        <p>Hello World</p>
-      </div>
+      <svg>
+        {keys}
+      </svg>
+    )
+  }
+
+  private makeKey(x: number, y: number, mainSym: string) {
+    const active = this.state.activeKeys[mainSym];
+    const className = (active) ? 'Key-Active' : 'Key-Inactive'
+    return (
+      <svg key={mainSym} className={className} x={x} y={y}>
+        <rect x={0} y={0} width={keySize} height={keySize}/>
+        <text x={20} y={20}>{mainSym.toUpperCase()}</text>
+      </svg>
     )
   }
 }
