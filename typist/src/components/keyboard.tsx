@@ -1,38 +1,47 @@
 import * as React from 'react';
 
-interface ISquareState {
-  active: boolean
+// const keySize = 40;
+
+const keySyms = [
+  'a', 'd', 'f', 'g'
+]
+
+interface State {
+  activeKeys: {[key: string] : boolean}
 }
 
-export default class Square extends React.Component<{}, ISquareState> {
-  public readonly state: ISquareState = {
-    active: false
-  };
+class Keyboard extends React.Component<{}, State> {
+  private static handleKeyDown(e: KeyboardEvent) {
+    // TODO
+  }
 
   constructor(props: {}) {
     super(props);
 
-    this.activate = this.activate.bind(this);
-    this.deactivate = this.deactivate.bind(this);
+    this.state = {
+      activeKeys: {}
+    }
+
+    for (const k of keySyms) {
+      this.state.activeKeys[k] = true
+    }
+  }
+
+  public componentDidMount() {
+    window.addEventListener('keydown', Keyboard.handleKeyDown)
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener('keydown', Keyboard.handleKeyDown)
   }
 
   public render() {
-    const stateClass = (this.state.active) ? 'Square-Active' : 'Square-Inactive';
     return (
-      <svg>
-        <rect className={stateClass} x='0' y='0' width='100' height='100'
-              onMouseEnter={this.activate}
-              onMouseLeave={this.deactivate}
-        />
-      </svg>
-    );
-  }
-
-  private activate() {
-    this.setState({active: true});
-  }
-
-  private deactivate() {
-    this.setState({active: false});
+      <div>
+        <p>Hello World</p>
+      </div>
+    )
   }
 }
+
+export default Keyboard;

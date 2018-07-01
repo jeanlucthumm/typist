@@ -23,12 +23,12 @@
   to { transform: rotate(360deg); }
 }
 
-.Square-Active {
+.Key-Active {
   fill: #222222;
   stroke: black;
 }
 
-.Square-Inactive {
+.Key-Inactive {
   fill: white;
   stroke: black;
 }
