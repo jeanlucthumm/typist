@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
 }
 
 .App-logo {
@@ -23,6 +22,10 @@
   to { transform: rotate(360deg); }
 }
 
+.Key {
+
+}
+
 .Key-Active {
   fill: #222222;
   stroke: black;
@@ -31,4 +34,8 @@
 .Key-Inactive {
   fill: white;
   stroke: black;
+}
+
+.Key_Text {
+  fill: white
 }
