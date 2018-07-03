@@ -22,6 +22,8 @@
   to { transform: rotate(360deg); }
 }
 
+/** Keyboard **/
+
 .Key {
 
 }
@@ -37,5 +39,19 @@
 }
 
 .Key_Text {
-  fill: white
+  fill: white;
+}
+
+/** Text Input **/
+
+.text-input .letter {
+  color: black;
+}
+
+.text-input .error {
+  color: red;
+}
+
+.text-input .complete {
+  background: #CCCCCC
 }
