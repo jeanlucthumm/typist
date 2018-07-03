@@ -46,6 +46,7 @@ class Keyboard extends React.Component<{}, State> {
   }
 
   public componentWillUnmount() {
+    // FIXME lambdas cannot be matched
     window.removeEventListener('keydown',
       (e: KeyboardEvent) => this.handleKeyPress(e, true))
     window.removeEventListener('keyup',

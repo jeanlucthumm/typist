@@ -34,6 +34,32 @@ export default class TextInput extends React.Component<{}, State> {
     )
   }
 
+  public componentDidMount() {
+    window.addEventListener('keydown', (e) => this.handleKeyPress(e))
+  }
+
+  public componentWillUnmount() {
+    // FIXME lambdas cannot be matched
+    window.removeEventListener('keydown', (e) => this.handleKeyPress(e))
+  }
+
+  private handleKeyPress(e: KeyboardEvent) {
+    if (e.key === this.state.text[this.state.pos]) {
+      // correct key advances position
+      this.setState({
+        pos: this.state.pos + 1
+      })
+    }
+    else if (this.state.errors.indexOf(this.state.pos) < 0) {
+      // mark as new error
+      const temp = this.state.errors
+      temp.push(this.state.pos)
+      this.setState({
+        errors: temp
+      })
+    }
+  }
+
   private makeLetter(c: string, pos: number) {
     const classes = classNames({
       'letter': true,
