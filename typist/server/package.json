@@ -1,0 +1,18 @@
+{
+  "name": "typist-server",
+  "version": "0.0.1",
+  "description": "REST server backing typist applicatin",
+  "main": "app.js",
+  "author": "Jean-Luc Thumm",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.16.0",
+    "@types/node": "^10.5.2",
+    "typescript": "^2.9.2"
+  }
+}
